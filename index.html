@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexus Local Click | Infraestruc
+tura Digital SaaS</title>
+
+<link rel="icon" type="assets/img/favicon.png" href="assets/img/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:#f1f5f9;
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.brand img{
+height:60px;
+}
+
+.brand h1{
+font-size:22px;
+font-weight:800;
+letter-spacing:1px;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#cbd5e1;
+font-weight:500;
+}
+
+nav a:hover{
+color:#38bdf8;
+}
+
+/* HERO */
+.hero{
+padding:100px 8%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:50px;
+}
+
+.hero-text{
+max-width:600px;
+}
+
+.hero-text h2{
+font-size:42px;
+margin-bottom:20px;
+}
+
+.hero-text p{
+color:#cbd5e1;
+line-height:1.6;
+margin-bottom:30px;
+}
+
+.hero-logo img{
+width:320px;
+}
+
+/* BUTTON */
+.btn{
+display:inline-block;
+padding:14px 28px;
+background:#38bdf8;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#0ea5e9;
+}
+
+/* SECTIONS */
+.section{
+padding:80px 8%;
+background:#111827;
+}
+
+.section h3{
+font-size:30px;
+margin-bottom:50px;
+text-align:center;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+/* CARDS GENERALES */
+.card{
+background:#1e293b;
+padding:30px;
+border-radius:14px;
+color:white;
+}
+
+/* PRICING */
+.price-card{
+background:#1e293b;
+padding:40px;
+border-radius:18px;
+color:white;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+transition:0.3s;
+position:relative;
+}
+
+.price-card:hover{
+transform:translateY(-10px);
+}
+
+.price-card h4{
+font-size:22px;
+margin-bottom:10px;
+}
+
+.price{
+font-size:28px;
+font-weight:800;
+margin:10px 0;
+color:#38bdf8;
+}
+
+.price-card ul{
+margin-top:15px;
+line-height:1.8;
+color:white;
+}
+
+/* PLAN DESTACADO */
+.recommended{
+border:2px solid #38bdf8;
+}
+
+.badge{
+position:absolute;
+top:-12px;
+right:20px;
+background:#38bdf8;
+color:white;
+padding:5px 12px;
+font-size:12px;
+border-radius:20px;
+font-weight:600;
+}
+
+/* FOOTER */
+.footer{
+padding:60px 8%;
+background:#0f172a;
+text-align:center;
+border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.footer img{
+height:50px;
+margin-bottom:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="brand">
+<img src="assets/img/logo-white.png" alt="Nexus Local Click">
+<h1>Nexus Local Click</h1>
+</div>
+
+<nav>
+<a href="#solucion">Solución</a>
+<a href="#planes">Planes</a>
+<a href="#contacto">Contacto</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-text">
+<h2>Digitalizamos negocios locales con infraestructura SaaS profesional</h2>
+<p>
+Convertimos tu negocio en una plataforma digital bajo subdominio seguro,
+automatizado y escalable. Somos tu partner tecnológico.
+</p>
+<a href="#contacto" class="btn">Agendar Diagnóstico</a>
+</div>
+
+<div class="hero-logo">
+<img src="assets/img/logo-maid.png" alt="Tecnología Nexus">
+</div>
+</section>
+
+<section class="section" id="solucion">
+<h3>Infraestructura Digital Real</h3>
+
+<div class="cards">
+<div class="card">
+<h4>Subdominio SaaS</h4>
+<p>tunegocio.localclick.mx con hosting optimizado y certificado HTTPS.</p>
+</div>
+
+<div class="card">
+<h4>Automatización 24/7</h4>
+<p>Agente digital vía WhatsApp o Telegram integrado a tu negocio.</p>
+</div>
+
+<div class="card">
+<h4>Escalabilidad</h4>
+<p>Modelo por mensajes que crece contigo sin pagar de más.</p>
+</div>
+</div>
+</section>
+
+<section class="section" id="planes">
+<h3>Planes Nexus Local Click</h3>
+
+<div style="text-align:center;margin-bottom:40px;">
+<img src="assets/img/logo-alt.png" alt="Identidad Nexus" style="height:70px;">
+</div>
+
+<div class="cards">
+
+<div class="price-card">
+<h4>Plan Básico</h4>
+<div class="price">$1,500 MXN Setup</div>
+<div class="price">$249.50 MXN / mes</div>
+<ul>
+<li>Subdominio localclick.mx</li>
+<li>250 mensajes incluidos</li>
+<li><strong>$1 MXN</strong> por mensaje adicional</li>
+<li>1 canal (WhatsApp o Telegram)</li>
+<li>Formulario profesional</li>
+<li>Hosting + HTTPS</li>
+</ul>
+</div>
+
+<div class="price-card recommended">
+<div class="badge">Más solicitado</div>
+<h4>Plan Intermedio</h4>
+<div class="price">$2,500 MXN Setup</div>
+<div class="price">$489.90 MXN / mes</div>
+<ul>
+<li>500 mensajes incluidos</li>
+<li><strong>$0.50 MXN</strong> por mensaje adicional</li>
+<li>Optimización inteligente de respuestas</li>
+<li>Integración redes sociales</li>
+<li>Métricas básicas</li>
+<li>Mejora de conversión</li>
+</ul>
+</div>
+
+<div class="price-card">
+<h4>Plan Premium</h4>
+<div class="price">$4,500 MXN Setup</div>
+<div class="price">$900 MXN / mes</div>
+<ul>
+<li>1,000 mensajes incluidos</li>
+<li>Tarifa preferencial por volumen</li>
+<li>Flujos personalizados avanzados</li>
+<li>Automatizaciones estratégicas</li>
+<li>Optimización de captación</li>
+<li>Soporte prioritario dedicado</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="contacto">
+<h3>Agenda tu Diagnóstico Digital</h3>
+<div style="text-align:center;">
+<a href="#" class="btn">Hablar con un Asesor</a>
+</div>
+</section>
+
+<footer class="footer">
+<img src="assets/img/logo-dark.png" alt="Nexus Footer">
+<p>© 2026 Nexus Local Click | Infraestructura Digital SaaS</p>
+</footer>
+
+<script>
+console.log("Nexus Local Click loaded successfully");
+</script>
+
+</body>
+</html>
