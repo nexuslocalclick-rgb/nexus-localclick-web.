@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nexus Local Click | Infraestruc
-tura Digital SaaS</title>
+<title>Nexus Local Click | Infraestructura Digital SaaS & Ecosistema Arcade</title>
 
 <link rel="icon" type="assets/img/favicon.png" href="assets/img/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 *{
@@ -38,29 +38,46 @@ gap:15px;
 }
 
 .brand img{
-height:60px;
+height:50px;
 }
 
 .brand h1{
-font-size:22px;
+font-size:20px;
 font-weight:800;
 letter-spacing:1px;
 }
 
+nav{
+display:flex;
+align-items:center;
+}
+
 nav a{
-margin-left:25px;
+margin-left:20px;
 text-decoration:none;
 color:#cbd5e1;
 font-weight:500;
+font-size:14px;
 }
 
 nav a:hover{
 color:#38bdf8;
 }
 
+.nav-arcade{
+color:#00f3ff !important;
+border:1px solid rgba(0, 243, 255, 0.4);
+padding:6px 12px;
+border-radius:8px;
+background:rgba(0, 243, 255, 0.05);
+}
+.nav-arcade:hover{
+background:rgba(0, 243, 255, 0.15);
+}
+
 /* HERO */
 .hero{
-padding:100px 8%;
+padding:90px 8%;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -72,18 +89,20 @@ max-width:600px;
 }
 
 .hero-text h2{
-font-size:42px;
+font-size:40px;
 margin-bottom:20px;
+line-height:1.2;
 }
 
 .hero-text p{
 color:#cbd5e1;
 line-height:1.6;
 margin-bottom:30px;
+font-size:15px;
 }
 
 .hero-logo img{
-width:320px;
+width:280px;
 }
 
 /* BUTTON */
@@ -102,6 +121,16 @@ transition:0.3s;
 background:#0ea5e9;
 }
 
+.btn-arcade{
+background:linear-gradient(135deg, #ff007f, #00f3ff);
+color:black;
+font-weight:800;
+}
+.btn-arcade:hover{
+opacity:0.9;
+color:white;
+}
+
 /* SECTIONS */
 .section{
 padding:80px 8%;
@@ -110,8 +139,18 @@ background:#111827;
 
 .section h3{
 font-size:30px;
-margin-bottom:50px;
+margin-bottom:20px;
 text-align:center;
+}
+
+.section-subtitle{
+text-align:center;
+color:#94a3b8;
+font-size:14px;
+margin-bottom:40px;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
 }
 
 .cards{
@@ -126,6 +165,57 @@ background:#1e293b;
 padding:30px;
 border-radius:14px;
 color:white;
+border:1px solid rgba(255,255,255,0.05);
+}
+
+.card h4{
+font-size:18px;
+margin-bottom:10px;
+color:#38bdf8;
+}
+
+.card p{
+font-size:14px;
+color:#cbd5e1;
+line-height:1.5;
+}
+
+/* ARCADE FEATURE SECTION */
+.arcade-feature-box{
+background:linear-gradient(145deg, #121222, #1e1e3f);
+border:2px solid #00f3ff;
+border-radius:20px;
+padding:40px;
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+justify-content:space-between;
+gap:30px;
+box-shadow:0 0 30px rgba(0, 243, 255, 0.15);
+}
+
+.arcade-feature-text{
+max-width:550px;
+}
+
+.arcade-feature-text h4{
+font-size:24px;
+color:white;
+margin-bottom:15px;
+}
+
+.arcade-feature-text p{
+color:#cbd5e1;
+font-size:14px;
+line-height:1.6;
+margin-bottom:20px;
+}
+
+.arcade-sponsors{
+font-size:12px;
+color:#38bdf8;
+margin-bottom:20px;
+font-weight:600;
 }
 
 /* PRICING */
@@ -137,6 +227,7 @@ color:white;
 box-shadow:0 15px 40px rgba(0,0,0,0.4);
 transition:0.3s;
 position:relative;
+border:1px solid rgba(255,255,255,0.05);
 }
 
 .price-card:hover{
@@ -149,7 +240,7 @@ margin-bottom:10px;
 }
 
 .price{
-font-size:28px;
+font-size:26px;
 font-weight:800;
 margin:10px 0;
 color:#38bdf8;
@@ -158,7 +249,13 @@ color:#38bdf8;
 .price-card ul{
 margin-top:15px;
 line-height:1.8;
-color:white;
+color:#cbd5e1;
+font-size:14px;
+list-style:none;
+}
+
+.price-card ul li{
+margin-bottom:8px;
 }
 
 /* PLAN DESTACADO */
@@ -187,8 +284,13 @@ border-top:1px solid rgba(255,255,255,0.08);
 }
 
 .footer img{
-height:50px;
+height:40px;
 margin-bottom:15px;
+}
+
+.footer p{
+font-size:13px;
+color:#94a3b8;
 }
 
 </style>
@@ -204,6 +306,7 @@ margin-bottom:15px;
 
 <nav>
 <a href="#solucion">Solución</a>
+<a href="#ecosistema" class="nav-arcade"><i class="fa-solid fa-gamepad"></i> Zona Arcade</a>
 <a href="#planes">Planes</a>
 <a href="#contacto">Contacto</a>
 </nav>
@@ -214,7 +317,7 @@ margin-bottom:15px;
 <h2>Digitalizamos negocios locales con infraestructura SaaS profesional</h2>
 <p>
 Convertimos tu negocio en una plataforma digital bajo subdominio seguro,
-automatizado y escalable. Somos tu partner tecnológico.
+automatizado y escalable. Somos tu partner tecnológico de confianza.
 </p>
 <a href="#contacto" class="btn">Agendar Diagnóstico</a>
 </div>
@@ -226,38 +329,76 @@ automatizado y escalable. Somos tu partner tecnológico.
 
 <section class="section" id="solucion">
 <h3>Infraestructura Digital Real</h3>
+<p class="section-subtitle">Herramientas diseñadas para posicionar comercios locales en la era digital sin complicaciones técnicas.</p>
 
 <div class="cards">
 <div class="card">
 <h4>Subdominio SaaS</h4>
-<p>tunegocio.localclick.mx con hosting optimizado y certificado HTTPS.</p>
+<p>tunegocio.localclick.mx con hosting optimizado, alta velocidad y certificado HTTPS seguro.</p>
 </div>
 
 <div class="card">
 <h4>Automatización 24/7</h4>
-<p>Agente digital vía WhatsApp o Telegram integrado a tu negocio.</p>
+<p>Agente digital inteligente vía WhatsApp o Telegram integrado a la operación de tu negocio.</p>
 </div>
 
 <div class="card">
-<h4>Escalabilidad</h4>
-<p>Modelo por mensajes que crece contigo sin pagar de más.</p>
+<h4>Escalabilidad Flexible</h4>
+<p>Esquemas adaptados al volumen real de tu operación para crecer sin pagar de más.</p>
+</div>
+</div>
+</section>
+
+<!-- NUEVO APARTADO: ECOSISTEMA Y CULTURA LIBRE (ZONA ARCADE) -->
+<section class="section" id="ecosistema" style="background:#0d111a;">
+<h3>Ecosistema y Cultura Libre</h3>
+<p class="section-subtitle">Creemos que la tecnología también impulsa la comunidad, el entretenimiento y el software abierto.</p>
+
+<div class="arcade-feature-box">
+<div class="arcade-feature-text">
+<div class="arcade-sponsors">
+    <i class="fa-solid fa-wrench"></i> Una iniciativa impulsada por Chevy Master & Nexus Local Click
+</div>
+<h4>Nexus Arcade • Sandbox de Emulación y Directorio Indie</h4>
+<p>
+Como parte de nuestro compromiso con el desarrollo web y el software libre, creamos <strong>Nexus Arcade</strong>: un espacio web interactivo para disfrutar de emulación web (N64 / PS1) y un directorio de juegos independientes sin registros ni descargas pesadas.
+</p>
+<p>
+<strong>100% gratuito, sin publicidad invasiva y abierto para toda la comunidad.</strong> Este año, la infraestructura técnica está siendo respaldada de forma conjunta por <strong>Chevy Master</strong> y <strong>Nexus Local Click</strong>. Para asegurar su permanencia y crecimiento el próximo año sin perder su gratuidad, nos apoyamos en aportaciones voluntarias.
+</p>
+<a href="https://www.zonaarcade.localclick.com.mx" target="_blank" class="btn btn-arcade">
+    <i class="fa-solid fa-gamepad mr-2"></i> Visitar Zona Arcade
+</a>
+</div>
+
+<div style="text-align:center; flex:1; min-width:220px;">
+<div style="background:#1e1e3f; border:1px dashed #00f3ff; border-radius:16px; padding:30px; text-align:center;">
+<i class="fa-solid fa-compact-disc fa-spin" style="font-size:48px; color:#00f3ff; margin-bottom:15px;"></i>
+<h5 style="color:white; font-size:16px; margin-bottom:8px;">Entretenimiento sin costo</h5>
+<p style="font-size:12px; color:#94a3b8; margin-bottom:15px;">Cero descargas de Windows, cero cuentas obligatorias. ¡Pura diversión web!</p>
+<a href="https://link.mercadopago.com.mx/arcadenexuslocalclik" target="_blank" style="color:#38bdf8; font-size:12px; text-decoration:underline; font-weight:600;">
+    <i class="fa-solid fa-hand-holding-dollar"></i> Apoyar con Mercado Pago
+</a>
+</div>
 </div>
 </div>
 </section>
 
 <section class="section" id="planes">
 <h3>Planes Nexus Local Click</h3>
+<p class="section-subtitle">Soluciones de entrada accesibles para impulsar cualquier negocio local.</p>
 
 <div style="text-align:center;margin-bottom:40px;">
-<img src="assets/img/logo-alt.png" alt="Identidad Nexus" style="height:70px;">
+<img src="assets/img/logo-alt.png" alt="Identidad Nexus" style="height:60px;">
 </div>
 
 <div class="cards">
 
+<!-- PLANES CON PRECIOS AJUSTABLES (Aquí los puedes modificar directo) -->
 <div class="price-card">
 <h4>Plan Básico</h4>
-<div class="price">$1,500 MXN Setup</div>
-<div class="price">$249.50 MXN / mes</div>
+<div class="price">$1,000 MXN Setup</div>
+<div class="price" style="font-size:18px; color:#cbd5e1;">$199 MXN / mes</div>
 <ul>
 <li>Subdominio localclick.mx</li>
 <li>250 mensajes incluidos</li>
@@ -271,12 +412,12 @@ automatizado y escalable. Somos tu partner tecnológico.
 <div class="price-card recommended">
 <div class="badge">Más solicitado</div>
 <h4>Plan Intermedio</h4>
-<div class="price">$2,500 MXN Setup</div>
-<div class="price">$489.90 MXN / mes</div>
+<div class="price">$1,800 MXN Setup</div>
+<div class="price" style="font-size:18px; color:#cbd5e1;">$399 MXN / mes</div>
 <ul>
 <li>500 mensajes incluidos</li>
 <li><strong>$0.50 MXN</strong> por mensaje adicional</li>
-<li>Optimización inteligente de respuestas</li>
+<li>Optimización inteligente</li>
 <li>Integración redes sociales</li>
 <li>Métricas básicas</li>
 <li>Mejora de conversión</li>
@@ -285,14 +426,13 @@ automatizado y escalable. Somos tu partner tecnológico.
 
 <div class="price-card">
 <h4>Plan Premium</h4>
-<div class="price">$4,500 MXN Setup</div>
-<div class="price">$900 MXN / mes</div>
+<div class="price">$3,000 MXN Setup</div>
+<div class="price" style="font-size:18px; color:#cbd5e1;">$750 MXN / mes</div>
 <ul>
 <li>1,000 mensajes incluidos</li>
 <li>Tarifa preferencial por volumen</li>
-<li>Flujos personalizados avanzados</li>
+<li>Flujos avanzados personalizados</li>
 <li>Automatizaciones estratégicas</li>
-<li>Optimización de captación</li>
 <li>Soporte prioritario dedicado</li>
 </ul>
 </div>
@@ -302,6 +442,7 @@ automatizado y escalable. Somos tu partner tecnológico.
 
 <section class="section" id="contacto">
 <h3>Agenda tu Diagnóstico Digital</h3>
+<p class="section-subtitle">Demos el primer paso para llevar tu comercio al siguiente nivel tecnológico.</p>
 <div style="text-align:center;">
 <a href="#" class="btn">Hablar con un Asesor</a>
 </div>
@@ -309,13 +450,12 @@ automatizado y escalable. Somos tu partner tecnológico.
 
 <footer class="footer">
 <img src="assets/img/logo-dark.png" alt="Nexus Footer">
-<p>© 2026 Nexus Local Click | Infraestructura Digital SaaS</p>
+<p>© 2026 Nexus Local Click | Infraestructura Digital SaaS & Cultura Libre</p>
 </footer>
 
 <script>
-console.log("Nexus Local Click loaded successfully");
+console.log("Nexus Local Click & Zona Arcade ecosystem loaded successfully");
 </script>
 
 </body>
-
 </html>
