@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus Local Click · Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090c1d;--panel:rgba(255,255,255,.05);--line:rgba(255,255,255,.13);--txt:#eaf0ff;--muted:#9aa6c8;--blue:#4f8cff;--violet:#8b5cf6;--err:#ff7a90;--ok:#5be3a4}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--txt);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:flex;justify-content:center;padding:24px 16px;position:relative;overflow-x:hidden}
+body::before{content:"";position:fixed;width:60vmax;height:60vmax;left:50%;top:-25vmax;transform:translateX(-50%);background:radial-gradient(circle,rgba(79,140,255,.35),rgba(139,92,246,.22) 45%,transparent 70%);filter:blur(30px);animation:drift 14s ease-in-out infinite alternate;pointer-events:none;z-index:0}
+@keyframes drift{to{transform:translateX(-42%) scale(1.12)}}
+@media (prefers-reduced-motion:reduce){body::before{animation:none}*{transition:none!important}}
+main{position:relative;z-index:1;width:100%;max-width:440px}
+main.wide{max-width:760px}
+h1,h2,h3{font-family:Sora,system-ui,sans-serif;margin:0}
+.brand{font-family:Sora,system-ui,sans-serif;font-weight:700;font-size:1.05rem;margin:8px 0 22px;display:flex;align-items:center;gap:10px}
+.brand i{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--violet))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:24px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+h1{font-size:1.5rem;margin-bottom:6px}
+.sub{color:var(--muted);margin:0 0 20px}
+.tabs{display:flex;gap:4px;background:rgba(0,0,0,.25);padding:4px;border-radius:12px;margin-bottom:20px}
+.tabs button{flex:1;border:0;background:none;color:var(--muted);padding:10px;border-radius:9px;font:inherit;cursor:pointer}
+.tabs button[aria-selected=true]{background:rgba(255,255,255,.1);color:var(--txt)}
+label{display:block;font-size:.88rem;color:var(--muted);margin:14px 0 6px}
+input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.28);color:var(--txt);font:inherit}
+input:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.btn{width:100%;margin-top:20px;padding:13px;border:0;border-radius:12px;font:inherit;font-weight:600;color:#fff;cursor:pointer;background:linear-gradient(135deg,var(--blue),var(--violet))}
+.btn:disabled{opacity:.6;cursor:wait}
+.btn.ghost{background:none;border:1px solid var(--line);margin-top:12px;width:auto;padding:9px 16px;color:var(--txt)}
+.msg{min-height:1.4em;margin:14px 0 0;font-size:.92rem}
+.msg.err{color:var(--err)}.msg.ok{color:var(--ok)}
+.link{background:none;border:0;color:var(--blue);cursor:pointer;font:inherit;padding:0;margin-top:14px}
+[hidden]{display:none!important}
+.cred{display:flex;align-items:center;gap:10px;justify-content:space-between;background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px}
+.cred small{display:block;color:var(--muted)}
+.cred code{word-break:break-all;font-size:.95rem}
+.cred button{flex:none;border:1px solid var(--line);background:none;color:var(--txt);border-radius:8px;padding:6px 12px;cursor:pointer;font:inherit}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:18px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}
+.stat small{color:var(--muted);display:block}
+.stat b{font-family:Sora,system-ui,sans-serif;font-size:1.3rem;display:block;margin-top:2px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.tool{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+.tool h3{font-size:1rem;margin-bottom:6px}
+.tool p{margin:0 0 12px;color:var(--muted);font-size:.92rem}
+.tag{display:inline-block;font-size:.8rem;padding:3px 10px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+</style>
+</head>
+<body>
+<main id="app">
+  <div class="brand"><i></i>Nexus Local Click</div>
+
+  <!-- Entrar / Crear cuenta -->
+  <section class="card" id="auth">
+    <div class="tabs" role="tablist">
+      <button role="tab" id="tab-login" aria-selected="true">Entrar</button>
+      <button role="tab" id="tab-reg" aria-selected="false">Crear cuenta</button>
+    </div>
+
+    <form id="f-login" novalidate>
+      <h1>Entra a tu panel</h1>
+      <p class="sub">Usa tu usuario y contraseña, o tu token.</p>
+      <div id="by-pass">
+        <label for="l-user">Usuario</label>
+        <input id="l-user" autocomplete="username" autocapitalize="none">
+        <label for="l-pass">Contraseña</label>
+        <input id="l-pass" type="password" autocomplete="current-password">
+      </div>
+      <div id="by-token" hidden>
+        <label for="l-token">Token</label>
+        <input id="l-token" autocapitalize="none" autocomplete="off">
+      </div>
+      <button class="btn" type="submit">Entrar</button>
+      <button class="link" type="button" id="swap">Prefiero entrar con mi token</button>
+      <p class="msg" id="m-login" role="status"></p>
+    </form>
+
+    <form id="f-reg" novalidate hidden>
+      <h1>Crea tu cuenta</h1>
+      <p class="sub">Prueba gratis por 7 días. Te damos usuario, contraseña y token al terminar.</p>
+      <label for="r-emp">Nombre de tu empresa</label>
+      <input id="r-emp" maxlength="100" autocomplete="organization">
+      <label for="r-giro">¿A qué se dedica?</label>
+      <input id="r-giro" maxlength="50" placeholder="Ej. Vender galletas">
+      <label for="r-tel">Teléfono</label>
+      <input id="r-tel" type="tel" maxlength="20" autocomplete="tel">
+      <label for="r-mail">Correo</label>
+      <input id="r-mail" type="email" maxlength="100" autocomplete="email">
+      <button class="btn" type="submit">Crear cuenta</button>
+      <p class="msg" id="m-reg" role="status"></p>
+    </form>
+  </section>
+
+  <!-- Credenciales (se muestran una sola vez) -->
+  <section class="card" id="creds" hidden>
+    <h1>Cuenta creada</h1>
+    <p class="sub">Guarda estos datos ahora. La contraseña no se vuelve a mostrar.</p>
+    <div class="cred"><div><small>Usuario</small><code id="c-user"></code></div><button type="button" data-copy="c-user">Copiar</button></div>
+    <div class="cred"><div><small>Contraseña</small><code id="c-pass"></code></div><button type="button" data-copy="c-pass">Copiar</button></div>
+    <div class="cred"><div><small>Token</small><code id="c-token"></code></div><button type="button" data-copy="c-token">Copiar</button></div>
+    <p class="msg" id="m-creds" role="status"></p>
+    <button class="btn" type="button" id="go-panel">Ya los guardé, entrar al panel</button>
+  </section>
+
+  <!-- Panel del usuario -->
+  <section id="panel" hidden>
+    <div class="top">
+      <div><h1 id="p-emp"></h1><span class="sub" id="p-rol"></span></div>
+      <button class="btn ghost" type="button" id="logout">Salir</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><small>Plan</small><b id="p-plan"></b></div>
+      <div class="stat"><small>Consultas disponibles hoy</small><b id="p-rest"></b></div>
+      <div class="stat"><small>Tu suscripción</small><b id="p-vence"></b></div>
+    </div>
+    <div class="tools">
+      <div class="tool"><h3>Páginas web automáticas</h3><p>Genera la página de tu negocio a partir de unos datos.</p><span class="tag">Próximamente</span></div>
+      <div class="tool"><h3>Convertidor de archivos</h3><p>Cambia el formato de tus imágenes y documentos.</p><span class="tag">Próximamente</span></div>
+      <div class="tool"><h3>Asistente de IA</h3><p>Haz consultas y recibe respuestas para tu negocio.</p><span class="tag">Próximamente</span></div>
+      <div class="tool"><h3>Asistente de redes sociales</h3><p>Crea publicaciones para tus redes y tu página.</p><span class="tag">Próximamente</span></div>
+    </div>
+  </section>
+</main>
+
+<script>
+// Cambia esta URL si tu n8n cambia de dirección.
+const API = 'https://core.localclick.com.mx/webhook';
+const $ = s => document.querySelector(s);
+let modo = 'clave', sesionToken = null;
+
+function vista(id){
+  ['auth','creds','panel'].forEach(v => { $('#'+v).hidden = v !== id; });
+  $('#app').classList.toggle('wide', id === 'panel');
+}
+function aviso(id, texto, tipo){ const m = $(id); m.textContent = texto || ''; m.className = 'msg ' + (tipo || ''); }
+
+async function llamar(ruta, cuerpo){
+  try{
+    const r = await fetch(API + '/' + ruta, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(cuerpo)});
+    let d = {}; try{ d = await r.json(); }catch(e){}
+    return { ok: !!d.success, d };
+  }catch(e){
+    return { ok:false, d:{ message:'No se pudo conectar con el servidor. Revisa tu internet e intenta de nuevo.' } };
+  }
+}
+
+function fechaLegible(txt){
+  if(!txt) return 'Sin vencimiento';
+  const [y,m,d] = txt.slice(0,10).split('-').map(Number);
+  const f = new Date(y, m-1, d);
+  const dias = Math.ceil((f - new Date().setHours(0,0,0,0)) / 86400000);
+  return f.toLocaleDateString('es-MX',{day:'numeric',month:'short',year:'numeric'}) + (dias >= 0 ? ' · ' + dias + (dias === 1 ? ' día' : ' días') : '');
+}
+
+function mostrarPanel(d){
+  sesionToken = d.token;
+  try{ sessionStorage.setItem('nlc_token', d.token); }catch(e){}
+  $('#p-emp').textContent = d.nombre_empresa || '';
+  $('#p-rol').textContent = d.rol || '';
+  $('#p-plan').textContent = d.plan || '—';
+  $('#p-rest').textContent = d.consultas_restantes;
+  $('#p-vence').textContent = fechaLegible(d.vence);
+  vista('panel');
+}
+
+// Pestañas
+function pestana(reg){
+  $('#tab-login').setAttribute('aria-selected', !reg);
+  $('#tab-reg').setAttribute('aria-selected', reg);
+  $('#f-login').hidden = reg; $('#f-reg').hidden = !reg;
+}
+$('#tab-login').onclick = () => pestana(false);
+$('#tab-reg').onclick = () => pestana(true);
+$('#swap').onclick = () => {
+  modo = modo === 'clave' ? 'token' : 'clave';
+  $('#by-pass').hidden = modo === 'token'; $('#by-token').hidden = modo === 'clave';
+  $('#swap').textContent = modo === 'clave' ? 'Prefiero entrar con mi token' : 'Prefiero usar usuario y contraseña';
+  aviso('#m-login','');
+};
+
+// Entrar
+$('#f-login').onsubmit = async e => {
+  e.preventDefault();
+  const cuerpo = modo === 'clave' ? { usuario:$('#l-user').value.trim(), password:$('#l-pass').value } : { token:$('#l-token').value.trim() };
+  if(modo === 'clave' ? (!cuerpo.usuario || !cuerpo.password) : !cuerpo.token){ aviso('#m-login','Completa los datos para entrar.','err'); return; }
+  const b = e.submitter; b.disabled = true; aviso('#m-login','Entrando…');
+  const {ok, d} = await llamar('portal-login', cuerpo);
+  b.disabled = false;
+  if(ok){ aviso('#m-login',''); $('#l-pass').value = ''; mostrarPanel(d); }
+  else aviso('#m-login', d.message || 'No se pudo entrar. Intenta de nuevo.', 'err');
+};
+
+// Crear cuenta
+$('#f-reg').onsubmit = async e => {
+  e.preventDefault();
+  const cuerpo = { empresa:$('#r-emp').value.trim(), giro:$('#r-giro').value.trim(), telefono:$('#r-tel').value.trim(), email:$('#r-mail').value.trim() };
+  if(!cuerpo.empresa || !cuerpo.giro || !cuerpo.telefono || !cuerpo.email){ aviso('#m-reg','Completa todos los campos.','err'); return; }
+  const b = e.submitter; b.disabled = true; aviso('#m-reg','Creando tu cuenta…');
+  const {ok, d} = await llamar('portal-registro', cuerpo);
+  b.disabled = false;
+  if(ok){
+    $('#c-user').textContent = d.usuario; $('#c-pass').textContent = d.password; $('#c-token').textContent = d.token;
+    aviso('#m-reg',''); vista('creds');
+  } else aviso('#m-reg', d.message || 'No se pudo crear la cuenta. Intenta de nuevo.', 'err');
+};
+
+// Copiar credenciales
+document.querySelectorAll('[data-copy]').forEach(b => b.onclick = async () => {
+  try{ await navigator.clipboard.writeText($('#'+b.dataset.copy).textContent); aviso('#m-creds','Copiado.','ok'); }
+  catch(e){ aviso('#m-creds','No se pudo copiar. Selecciona el texto y cópialo a mano.','err'); }
+});
+$('#go-panel').onclick = async () => {
+  const {ok, d} = await llamar('portal-login', { token:$('#c-token').textContent });
+  if(ok){ ['#c-pass','#c-token','#c-user'].forEach(s => $(s).textContent = ''); mostrarPanel(d); }
+  else aviso('#m-creds', d.message || 'No se pudo abrir el panel. Entra con tu token.', 'err');
+};
+
+// Salir
+$('#logout').onclick = () => {
+  sesionToken = null; try{ sessionStorage.removeItem('nlc_token'); }catch(e){}
+  vista('auth');
+};
+
+// Recuperar sesión abierta en esta pestaña
+(async () => {
+  let t = null; try{ t = sessionStorage.getItem('nlc_token'); }catch(e){}
+  if(!t) return;
+  const {ok, d} = await llamar('portal-login', { token:t });
+  if(ok) mostrarPanel(d); else { try{ sessionStorage.removeItem('nlc_token'); }catch(e){} }
+})();
+</script>
+</body>
+</html>
